@@ -46,7 +46,7 @@ public class ExpenseServiceImpl implements ExpenseService {
 		existingExpense.setDescription(expense.getDescription()!=null?expense.getDescription():existingExpense.getDescription());
 		existingExpense.setAmount(expense.getAmount()!=null?expense.getAmount():existingExpense.getAmount());
 		existingExpense.setCategory(expense.getCategory()!=null?expense.getCategory():existingExpense.getCategory());
-		existingExpense.setDate(expense.getDate()!=null?expense.getDate():existingExpense.getDate());
+		existingExpense.getUpdatedAt();
 		return expenseRepo.save(existingExpense);
 	}
 

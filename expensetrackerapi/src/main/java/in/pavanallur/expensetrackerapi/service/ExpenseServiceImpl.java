@@ -28,4 +28,15 @@ public class ExpenseServiceImpl implements ExpenseService {
 		throw new RuntimeException(" expense not found in db for id "+id);
 	}
 
+	@Override
+	public void deleteExpenseById(Long id) {
+		expenseRepo.deleteById(id);
+		
+	}
+
+	@Override
+	public Expense saveExpensDetails(Expense expense) {
+		return expenseRepo.save(expense);
+	}
+
 }

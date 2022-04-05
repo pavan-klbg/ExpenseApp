@@ -6,6 +6,8 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.DeleteMapping;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
+import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
 
@@ -28,7 +30,13 @@ public class ExpenseController {
 	}
 	
 	@DeleteMapping("/expenses")
-	public String  deleteExpenseById( @RequestParam("id") Long id) {  // not mandatory to include "id" if the variabale name is same
-		return "delete expense obj from id" +id;
+	public void  deleteExpenseById( @RequestParam("id") Long id) {  // not mandatory to include "id" if the variabale name is same
+		expenseService.deleteExpenseById(id);
 	}
+	
+	@PostMapping("/expenses")
+	public Expense saveExpenseDetails(@RequestBody Expense expense) {
+		return expenseService.saveExpensDetails(expense);
+	}
+	
 }

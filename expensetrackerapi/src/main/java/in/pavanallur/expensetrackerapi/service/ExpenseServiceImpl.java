@@ -4,6 +4,8 @@ import java.util.List;
 import java.util.Optional;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.data.domain.Page;
+import org.springframework.data.domain.Pageable;
 import org.springframework.stereotype.Service;
 
 import in.pavanallur.expensetrackerapi.entity.Expense;
@@ -13,10 +15,14 @@ import in.pavanallur.expensetrackerapi.repository.ExpenseRepository;
 public class ExpenseServiceImpl implements ExpenseService {
 	@Autowired
 	public ExpenseRepository expenseRepo;
-
+	
+//	@Override
+//	public List<Expense> getAllExpenses() {
+//		return  expenseRepo.findAll();
+//	}
 	@Override
-	public List<Expense> getAllExpenses() {
-		return  expenseRepo.findAll();
+	public Page<Expense> getAllExpenses(Pageable page) {
+		return expenseRepo.findAll(page);
 	}
 
 	@Override
@@ -49,5 +55,7 @@ public class ExpenseServiceImpl implements ExpenseService {
 		existingExpense.getUpdatedAt();
 		return expenseRepo.save(existingExpense);
 	}
+
+	
 
 }

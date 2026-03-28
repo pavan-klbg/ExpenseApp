@@ -11,7 +11,7 @@ import org.mapstruct.factory.Mappers;
 @Mapper(componentModel = "spring")
 public interface UserMapper {
 
-    UserMapper INSTANCE= Mappers.getMapper(UserMapper.class);
+   // UserMapper INSTANCE= Mappers.getMapper(UserMapper.class);
 
     UserRequest toUserRequest(User user);
     User toUserEntity(UserRequest userRequest);
